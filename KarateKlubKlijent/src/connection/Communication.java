@@ -198,8 +198,8 @@ public class Communication {
         }
     }
 
-    public void addRezultatPolaganja(RezultatPolaganja rezultatPolaganja) throws Exception {
-        Request request = new Request(Operation.ZAPAMTI_REZULTAT_POLAGANJA, rezultatPolaganja);
+    public void addRezultatPolaganja(ArrayList<RezultatPolaganja> listaRezultata) throws Exception {
+        Request request = new Request(Operation.ZAPAMTI_REZULTAT_POLAGANJA, listaRezultata);
         sender.send(request);
         Response response = (Response) receiver.recieve();
         if (response.getException() != null) {

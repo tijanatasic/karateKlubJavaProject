@@ -8,27 +8,30 @@ package operationsStatistike;
 import controller.Controller;
 import domen.RezultatPolaganja;
 import domen.Takmicar;
+import java.util.ArrayList;
 import operation.AbstractGenericOperation;
 
 /**
  *
  * @author Folio1040
  */
-public class AddRezultatPolaganja extends AbstractGenericOperation{
+public class AddRezultatPolaganja extends AbstractGenericOperation {
 
     @Override
     protected void preconditions(Object param) throws Exception {
-        if(param==null){
+        if (param == null) {
             throw new Exception("Neodgovarajuci podaci");
         }
     }
 
     @Override
     protected void executeOperation(Object param) throws Exception {
-        repository.add((RezultatPolaganja)param);
-        if(((RezultatPolaganja) param).isPolozio()){
-            repository.edit(((RezultatPolaganja)param).getClanID());
+        ArrayList<RezultatPolaganja> rezultati = (ArrayList<RezultatPolaganja>) param;
+        for (RezultatPolaganja rezultatPolaganja : rezultati) {
+            repository.add(rezultatPolaganja);
+            if ((rezultatPolaganja).isPolozio()) {
+                repository.edit(rezultatPolaganja.getClanID());
+            }
         }
     }
-    
 }

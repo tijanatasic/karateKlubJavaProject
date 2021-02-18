@@ -23,9 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableModel;
 import model.ModelStatistikaTakmicenja;
-import model.ModelTakmicari;
 
 /**
  *
@@ -162,6 +160,18 @@ public class RezultatTakmicenjeController {
                 } else {
                     JOptionPane.showMessageDialog(frmRezultatTakmicenja, "Vec ste uneli rezultat za datog takmicara", "Greska", JOptionPane.ERROR_MESSAGE);
                 }
+            }
+        });
+        frmRezultatTakmicenja.addObrisiListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int row=frmRezultatTakmicenja.getTblRezultati().getSelectedRow();
+                if(row==-1){
+                    JOptionPane.showMessageDialog(frmRezultatTakmicenja, "Izaberite rezultat tamicenja koji zelite da obrisete", "Greska", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                ModelStatistikaTakmicenja model=(ModelStatistikaTakmicenja) frmRezultatTakmicenja.getTblRezultati().getModel();
+                model.delete(row);
             }
         });
     }

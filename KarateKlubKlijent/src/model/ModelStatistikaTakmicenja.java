@@ -78,4 +78,9 @@ public class ModelStatistikaTakmicenja extends AbstractTableModel {
         return lista;
     }
 
+    public void delete(int row) {
+        lista.remove(row);
+        fireTableDataChanged();
+    }
+
 }

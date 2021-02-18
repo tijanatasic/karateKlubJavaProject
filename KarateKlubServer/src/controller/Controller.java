@@ -144,7 +144,7 @@ public class Controller {
         return ((GetAllPolaganja) operation).getListaPolaganja();
     }
 
-    public void addRezultatPolaganja(RezultatPolaganja rezultatPolaganja) throws Exception {
+    public void addRezultatPolaganja(ArrayList<RezultatPolaganja> rezultatPolaganja) throws Exception {
         AbstractGenericOperation operation = new AddRezultatPolaganja();
         operation.execute(rezultatPolaganja);
     }

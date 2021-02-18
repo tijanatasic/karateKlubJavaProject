@@ -96,7 +96,7 @@ public class ProcessRequests extends Thread {
                             response.setResult(Controller.getInstance().getAllPolaganja());
                             break;
                         case ZAPAMTI_REZULTAT_POLAGANJA:
-                            Controller.getInstance().addRezultatPolaganja((RezultatPolaganja) request.getArgument());
+                            Controller.getInstance().addRezultatPolaganja((ArrayList<RezultatPolaganja>) request.getArgument());
                             break;
                         case OSVEZI_TAKMICARE:
                             Controller.getInstance().updateTakmicari();
