@@ -236,4 +236,46 @@ public class Takmicar implements GenericEntity {
         return "takmicarID=" + takmicarID;
     }
 
+    @Override
+    public String getJoinCondition() {
+        return "timID";
+    }
+
+    @Override
+    public ArrayList<GenericEntity> getFromResultSetJoin(ResultSet rs) {
+        ArrayList<GenericEntity> lista = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                Takmicar takmicar = new Takmicar();
+                takmicar.setTakmicarID(rs.getInt("takmicar.takmicarID"));
+                takmicar.setTim(rs.getBoolean("takmicar.tim"));
+                takmicar.setPojedinacno(rs.getBoolean("takmicar.pojedinacno"));
+                takmicar.setKategorija(Kategorija.valueOf(rs.getString("takmicar.kategorija")));
+                if(rs.getInt("takmicar.timID")==0){
+                    takmicar.setTimID(new Tim(rs.getInt("timID"), "", false, false, false));
+                }else{
+                    Tim tim=new Tim();
+                    tim.setTimID(rs.getInt("takmicar.timID"));
+                    tim.setTimBorbe(rs.getBoolean("tim.timBorbe"));
+                    tim.setTimKate(rs.getBoolean("tim.timKate"));
+                    tim.setTimTakmicar(rs.getBoolean("tim.timTakmicar"));
+                    tim.setNaziv(rs.getString("naziv"));
+                    takmicar.setTimID(tim);
+                }
+                Clan clan=new Clan();
+                clan.setClanID(rs.getInt("takmicar.clanID"));
+                clan.setIme(rs.getString("ime"));
+                clan.setPrezime(rs.getString("prezime"));
+                clan.setJMBG(rs.getLong("JMBG"));
+                clan.setPojas(Pojas.valueOf(rs.getString("pojas")));
+                clan.setTim(takmicar.getTimID());
+                takmicar.setClanID(clan);
+                lista.add(takmicar);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Tim.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
+
 }

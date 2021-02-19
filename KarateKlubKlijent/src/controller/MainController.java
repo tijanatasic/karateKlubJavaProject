@@ -108,8 +108,7 @@ public class MainController {
         frmMain.setVisible(true);
         ImageIcon image = new ImageIcon(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/images/logo.jpg")));
         Image img1 = image.getImage();
-        Image img2 = img1.getScaledInstance(frmMain.getLblPozadina().getWidth(), frmMain.getLblPozadina().getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon i = new ImageIcon(img2);
+        ImageIcon i = new ImageIcon(img1);
         frmMain.getLblPozadina().setIcon(i);
     }
 

@@ -16,35 +16,20 @@ import operation.AbstractGenericOperation;
  *
  * @author Folio1040
  */
-public class GetAllTakmicari extends AbstractGenericOperation{
-    
-    ArrayList<Takmicar> listaTakmicara=new ArrayList<>();
+public class GetAllTakmicari extends AbstractGenericOperation {
+
+    ArrayList<Takmicar> listaTakmicara = new ArrayList<>();
 
     @Override
     protected void preconditions(Object param) throws Exception {
-        if(param==null){
+        if (param == null) {
             throw new Exception("Neodgovarajuci podaci");
         }
     }
 
     @Override
     protected void executeOperation(Object param) throws Exception {
-        ArrayList<Takmicar> takmicari = (ArrayList<Takmicar>) repository.getAll((Takmicar)param);
-        for (Takmicar takmicar : takmicari) {
-            Clan clan = new Clan();
-            clan.setClanID(takmicar.getClanID().getClanID());
-            clan=(Clan) repository.getOne(clan);
-            takmicar.setClanID(clan);
-            if (takmicar.getTimID().getTimID() != 0) {
-                Tim tim = new Tim();
-                tim.setTimID(takmicar.getTimID().getTimID());
-                tim=(Tim) repository.getOne(tim);
-                takmicar.setTimID(tim);
-            } else {
-                takmicar.setTimID(new Tim(0, "", false, false, false));
-            }
-            listaTakmicara.add(takmicar);
-        }
+        listaTakmicara = (ArrayList<Takmicar>) repository.getAllJoin((Takmicar) param, new Tim(), new Clan());
     }
 
     public ArrayList<Takmicar> getListaTakmicara() {

@@ -33,6 +33,9 @@ public interface GenericEntity extends Serializable{
 
     public String getOneCondition();
 
+    public String getJoinCondition();
+
+    public ArrayList<GenericEntity> getFromResultSetJoin(ResultSet rs);
 
 
 }

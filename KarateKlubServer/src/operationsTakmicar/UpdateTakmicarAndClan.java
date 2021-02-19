@@ -28,6 +28,9 @@ public class UpdateTakmicarAndClan extends AbstractGenericOperation{
     protected void executeOperation(Object param) throws Exception {
         ArrayList<Takmicar> listaTakmicara=(ArrayList<Takmicar>) param;
         for (Takmicar takmicar : listaTakmicara) {
+            if(takmicar.getTimID().getTimID()!=0){
+                takmicar.setTim(true);
+            }
             repository.edit(takmicar);
             Clan clan = takmicar.getClanID();
             clan.setTim(takmicar.getTimID());

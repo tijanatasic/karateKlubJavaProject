@@ -238,4 +238,14 @@ public class Clan implements GenericEntity{
         return "clanID="+clanID;
     }
 
+    @Override
+    public String getJoinCondition() {
+        return "clanID";
+    }
+
+    @Override
+    public ArrayList<GenericEntity> getFromResultSetJoin(ResultSet rs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

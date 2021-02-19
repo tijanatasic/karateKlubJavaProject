@@ -159,4 +159,14 @@ public class Polaganje implements GenericEntity {
         return "polaganjeID=" + polaganjeID;
     }
 
+    @Override
+    public String getJoinCondition() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<GenericEntity> getFromResultSetJoin(ResultSet rs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

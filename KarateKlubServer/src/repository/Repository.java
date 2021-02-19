@@ -19,4 +19,5 @@ public interface Repository<T> {
     void edit(T param) throws Exception;
     void delete(T param)throws Exception;
     T getOne(T param);
+    List<T> getAllJoin(T param1,T param2,T param3) throws Exception;
 }

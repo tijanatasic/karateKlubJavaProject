@@ -110,8 +110,12 @@ public class RezultatiPolaganjaController {
                     ModelStatistikaPolaganja model = (ModelStatistikaPolaganja) frmRezultatiPolaganja.getTblRezultati().getModel();
                     ArrayList<RezultatPolaganja> rezultati = model.getLista();
                     for (RezultatPolaganja rezultatPolaganja : rezultati) {
-                        if (rezultatPolaganja.getClanID().equals(rezultat.getClanID()) && rezultatPolaganja.getPojas() == rezultat.getPojas()) {
+                        if (rezultatPolaganja.getClanID().equals(rezultat.getClanID()) && rezultatPolaganja.getPojas() == rezultat.getPojas() && rezultatPolaganja.isPolozio()) {
                             JOptionPane.showMessageDialog(frmRezultatiPolaganja, "Clan je vec polozio za dati pojas", "Greska", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                        if(rezultatPolaganja.getClanID().equals(rezultat.getClanID()) && rezultatPolaganja.getPolaganjeID().equals(rezultat.getPolaganjeID())){
+                            JOptionPane.showMessageDialog(frmRezultatiPolaganja, "Clan je vec izlazio na dato polaganje", "Greska", JOptionPane.ERROR_MESSAGE);
                             return;
                         }
                     }

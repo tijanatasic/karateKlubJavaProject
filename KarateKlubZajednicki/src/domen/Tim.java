@@ -202,4 +202,14 @@ public class Tim implements GenericEntity {
         return "naziv='"+naziv+"'";
     }
 
+    @Override
+    public String getJoinCondition() {
+        return "timID";
+    }
+
+    @Override
+    public ArrayList<GenericEntity> getFromResultSetJoin(ResultSet rs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

@@ -8,6 +8,7 @@ package form;
 import connection.Communication;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 
@@ -23,6 +24,7 @@ public class FrmMain extends javax.swing.JFrame {
     public FrmMain() {
         initComponents();
         setLocationRelativeTo(this);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         try {
             Communication.getInstance();
             lblKonekcija.setText("Uspesno ste povezani na server!");
@@ -74,7 +76,7 @@ public class FrmMain extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblKonekcija.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblKonekcija.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblKonekcija.setForeground(new java.awt.Color(20, 34, 89));
         lblKonekcija.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -86,21 +88,21 @@ public class FrmMain extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblKonekcija, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblKonekcija, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(lblPozadina, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                .addGap(201, 201, 201))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addComponent(lblPozadina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(185, 185, 185))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(lblPozadina, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(lblPozadina, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(lblKonekcija, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
+                .addGap(29, 29, 29))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(20, 34, 89));

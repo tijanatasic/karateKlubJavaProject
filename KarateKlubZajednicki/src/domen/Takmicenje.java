@@ -173,4 +173,14 @@ public class Takmicenje implements GenericEntity {
         return "takmicenjeiD="+takmicenjeID;
     }
 
+    @Override
+    public String getJoinCondition() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<GenericEntity> getFromResultSetJoin(ResultSet rs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

@@ -163,7 +163,6 @@ public class PrikaziSveTakmicareController {
                 }
             }
         });
-
     }
 
     private void setImage() {

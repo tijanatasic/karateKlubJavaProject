@@ -146,4 +146,42 @@ public class GenericDBRepository implements DBRepository<GenericEntity>{
         }
         return list;
     }
+
+    @Override
+    public List<GenericEntity> getAllJoin(GenericEntity param1, GenericEntity param2, GenericEntity param3) throws Exception {
+        List<GenericEntity> list=null;
+        try {
+            Connection connection=DBConnectionFactory.getInstance().getConnection();
+            StringBuilder sb = new StringBuilder();
+            sb.append("SELECT ").append(param1.getTableName()+".*, ")
+                    .append(param2.getTableName()+".*, ")
+                    .append(param3.getTableName()+".*")
+                    .append(" FROM ")
+                    .append(param1.getTableName()+" "+param1.getTableName())
+                    .append(" LEFT JOIN ")
+                    .append(param2.getTableName()+" "+param2.getTableName())
+                    .append(" ON ")
+                    .append(param1.getTableName()+".")
+                    .append(param1.getJoinCondition()+"=")
+                    .append(param2.getTableName()+".")
+                    .append(param2.getJoinCondition())
+                    .append(" LEFT JOIN ")
+                    .append(param3.getTableName()+" "+param3.getTableName())
+                    .append(" ON ")
+                    .append(param1.getTableName()+".")
+                    .append(param3.getJoinCondition()+"=")
+                    .append(param3.getTableName()+".")
+                    .append(param3.getJoinCondition());
+            String query = sb.toString();
+            System.out.println(query);
+            Statement statement=connection.createStatement();
+            ResultSet rs=statement.executeQuery(query);
+            list=new ArrayList<>(param1.getFromResultSetJoin(rs));
+            rs.close();
+            statement.close();
+        } catch (Exception ex) {
+            Logger.getLogger(GenericDBRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 }
